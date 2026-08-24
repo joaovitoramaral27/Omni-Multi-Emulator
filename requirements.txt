@@ -1,5 +1,11 @@
 #Rodar o código no terminal com o comando:
 python -m APP.main
 
+# Requisições HTTP para buscar capas online:
+pip install requests
+
+# Leitura e análise das páginas do The Cover Project:
+pip install beautifulsoup4
+
 #Instalações necessárias:
-#pip install kivy
+pip install kivy

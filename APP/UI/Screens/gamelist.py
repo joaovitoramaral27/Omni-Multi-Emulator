@@ -10,6 +10,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
 from kivy.uix.filechooser import FileChooserListView
 
+from APP.Settings.cover_manager import get_cover
 from APP.UI.Components.game_card import GameCard
 from APP.Settings.rom_folders import get_folder, save_folder
 
@@ -214,16 +215,28 @@ class GameList(Screen):
             game_name = game.stem
 
             try:
+                cover = get_cover(
+                    game_name,
+                    self.system_name
+                )
+
+                print(
+                    f"COVER PARA {game_name}: {cover}"
+                )
+
                 card = GameCard(
                     game_name=game_name,
                     game_path=str(game),
+                    cover=cover,
                     on_select=self.select_game
                 )
 
                 self.game_grid.add_widget(card)
 
             except Exception as e:
-                print(f"ERRO AO CRIAR CARD PARA {game}: {e}")
+                print(
+                    f"ERRO AO CRIAR CARD PARA {game}: {e}"
+                )
 
     def select_game(self, game_path):
         print(f"Jogo selecionado: {game_path}")
