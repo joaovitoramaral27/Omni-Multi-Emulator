@@ -4,6 +4,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.image import Image
+from kivy.uix.button import Button
 
 from APP.UI.Components.emulator_card import EmulatorCard
 
@@ -31,13 +32,15 @@ class Homepage(Screen):
         profile_image = Image(
         source="Assets/LowProfile.png",
         size_hint_x=None,
-        width=40
+        width=80
         )
 
-        profile_label = Label(
-        text="Profile"
+        profile_label = Button(
+        text="Profile",
+        background_color=(103/255, 103/255, 197/255, 1),
+        on_release=self.open_profile
         )
-
+        
         title_label = Label(
             text="Omni"
         )
@@ -100,3 +103,6 @@ class Homepage(Screen):
         game_list.set_system(system_name)
 
         self.manager.current = "gamelist"
+
+    def open_profile(self, instance):
+        self.manager.current = "profile"
