@@ -12,6 +12,7 @@ A arquitetura do projeto será desenvolvida pensando na expansão futura para ou
 
 - Nintendo DS
 - Nintendo 3DS
+- PC (para aplicações bem leves inicialmente)
 - Outros consoles e plataformas no futuro
 
 ## Objetivo
