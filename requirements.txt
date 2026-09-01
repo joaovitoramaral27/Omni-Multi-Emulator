@@ -4,7 +4,7 @@ python -m APP.main
 # Requisições HTTP para buscar capas online:
 pip install requests
 
-# Leitura e análise das páginas do The Cover Project:
+# Requisições HTTP para buscar capas online:
 pip install beautifulsoup4
 
 #Instalações necessárias:
