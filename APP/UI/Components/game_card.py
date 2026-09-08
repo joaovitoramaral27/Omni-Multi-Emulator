@@ -3,6 +3,7 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.graphics import Color, RoundedRectangle
+from kivy.core.window import Window
 
 
 class GameCard(ButtonBehavior, BoxLayout):
@@ -14,10 +15,11 @@ class GameCard(ButtonBehavior, BoxLayout):
         self.game_path = game_path
         self.on_select = on_select
 
-        self.orientation = "vertical"
+        self.orientation = "horizontal"
 
-        self.size_hint = (None, None)
-        self.size = (160, 200)
+        self.size_hint_x = 1
+        self.size_hint_y = None
+        self.height = 75
 
         self.spacing = 8
         self.padding = 10
@@ -36,26 +38,35 @@ class GameCard(ButtonBehavior, BoxLayout):
             size=self.update_background
         )
 
-        if cover:
-            game_image = Image(
-                source=cover,
-                allow_stretch=True,
-                keep_ratio=True
-            )
-        else:
-            game_image = Image(
-                source="Assets/GamePlaceholder.png",
-                allow_stretch=True,
-                keep_ratio=True
-            )
-
         game_label = Label(
             text=game_name,
-            size_hint_y=None,
-            height=35
+            size_hint_x=1,
+            halign="left",
+            valign="middle",
         )
 
-        self.add_widget(game_image)
+        with game_label.canvas.before:
+            Color(0.07, 0.09, 0.18, 1)
+
+            label_background = RoundedRectangle(
+                pos=game_label.pos,
+                size=game_label.size,
+                radius=[8]
+            )
+
+        game_label.bind(
+            pos=lambda instance, value: setattr(
+                label_background,
+                "pos",
+                value
+            ),
+            size=lambda instance, value: setattr(
+                label_background,
+                "size",
+                value
+            )
+        )
+
         self.add_widget(game_label)
 
     def update_background(self, *args):
