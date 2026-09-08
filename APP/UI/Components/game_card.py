@@ -14,7 +14,7 @@ class GameCard(ButtonBehavior, BoxLayout):
         self.game_path = game_path
         self.on_select = on_select
 
-        self.orientation = "vertical"
+        self.orientation = "horizontal"
 
         self.size_hint = (None, None)
         self.size = (160, 200)
@@ -36,26 +36,12 @@ class GameCard(ButtonBehavior, BoxLayout):
             size=self.update_background
         )
 
-        if cover:
-            game_image = Image(
-                source=cover,
-                allow_stretch=True,
-                keep_ratio=True
-            )
-        else:
-            game_image = Image(
-                source="Assets/GamePlaceholder.png",
-                allow_stretch=True,
-                keep_ratio=True
-            )
-
         game_label = Label(
             text=game_name,
-            size_hint_y=None,
-            height=35
+            size_hint_x=None,
+            width=game_label.texture_size[0]
         )
 
-        self.add_widget(game_image)
         self.add_widget(game_label)
 
     def update_background(self, *args):
