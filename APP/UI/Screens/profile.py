@@ -22,3 +22,22 @@ class Profile(Screen):
             size_hint_y=None,
             height=60
         )
+
+        back_button = Button(
+            text="<",
+            size_hint_x=None,
+            width=50
+        )
+
+        back_button.bind(
+            on_release=self.go_home
+        )
+
+        header.add_widget(back_button)
+
+        main_layout.add_widget(header)
+
+        self.add_widget(main_layout)
+
+    def go_home(self, *args):
+        self.manager.current = "homepage"

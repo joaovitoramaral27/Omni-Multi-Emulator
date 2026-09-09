@@ -64,8 +64,8 @@ class GameList(Screen):
         main_layout.add_widget(header)
 
         self.game_grid = GridLayout(
-            cols=4,
-            spacing=15,
+            cols=1,
+            spacing=5,
             padding=20,
             size_hint_y=None
         )
