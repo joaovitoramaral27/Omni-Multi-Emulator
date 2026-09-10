@@ -40,4 +40,4 @@ class Profile(Screen):
         self.add_widget(main_layout)
 
     def go_home(self, *args):
-        self.manager.current = "homepage"
+        self.manager.current = "homepage"   

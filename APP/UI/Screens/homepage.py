@@ -5,6 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.image import Image
 from kivy.uix.button import Button
+from APP.UI.Components.profile_card import ProfileCard
 
 from APP.UI.Components.emulator_card import EmulatorCard
 
@@ -24,29 +25,22 @@ class Homepage(Screen):
         )
 
         profile_area = BoxLayout(
-        orientation="horizontal",
-        size_hint_x=None,
-        width=180
-    )
-
-        profile_image = Image(
-        source="Assets/LowProfile.png",
-        size_hint_x=None,
-        width=80
+            orientation="horizontal",
+            size_hint_x=None,
+            width=220
         )
 
-        profile_label = Button(
-        text="Profile",
-        background_color=(103/255, 103/255, 197/255, 1),
-        on_release=self.open_profile
+        profile_card = ProfileCard(
+            username="Mudz",
+            image="Assets/LowProfile.png",
+            on_select=self.open_profile
         )
         
         title_label = Label(
             text="Omni"
         )
 
-        profile_area.add_widget(profile_image)
-        profile_area.add_widget(profile_label)
+        profile_area.add_widget(profile_card)
         header.add_widget(profile_area)
         header.add_widget(title_label)
 
