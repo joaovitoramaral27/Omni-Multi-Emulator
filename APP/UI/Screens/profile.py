@@ -7,6 +7,7 @@ from kivy.uix.image import Image
 from kivy.uix.button import Button
 
 from APP.UI.Components.emulator_card import EmulatorCard
+from APP.UI.Components.profile_select import ProfileSelect
 
 class Profile(Screen):
 
@@ -38,6 +39,20 @@ class Profile(Screen):
         main_layout.add_widget(header)
 
         self.add_widget(main_layout)
+
+        profile_area = AnchorLayout(
+            size_hint_y=None,
+            height=220,
+            width=50
+        )
+
+        profile_card = ProfileSelect(
+            username="Profile",
+            image="Assets/LowProfile.png",
+            #on_select=self.open_profile,
+        )
+        profile_area.add_widget(profile_card)
+        main_layout.add_widget(profile_area)
 
     def go_home(self, *args):
         self.manager.current = "homepage"   

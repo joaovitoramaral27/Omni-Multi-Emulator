@@ -31,7 +31,7 @@ class Homepage(Screen):
         )
 
         profile_card = ProfileCard(
-            username="Mudz",
+            username="Profile",
             image="Assets/LowProfile.png",
             on_select=self.open_profile
         )
